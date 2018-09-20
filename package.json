@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -20,7 +20,13 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "ag-grid": "^18.1.2",
+    "ag-grid-angular": "^18.1.0",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.5.4",
+    "ngx-cookie": "^4.0.2",
+    "ngx-file-helpers": "^1.0.0-alpha.5",
+    "ngx-papaparse": "^2.1.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

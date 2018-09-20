@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row" *ngIf="messageHandler.errors.length > 0">
+      <div class="col-md-12 msg-section">
+        <!--<h4>Errors:</h4>-->
+        <span class="error-text help-block" *ngFor="let msg of messageHandler.errors">{{msg}}</span>
+      </div>
+    </div>
+    <div class="row" *ngIf="messageHandler.warnings.length > 0">
+      <div class="col-md-12 msg-section">
+        <!--<h4>Warnings:</h4>-->
+        <span class="warning-text help-block" *ngFor="let msg of messageHandler.warnings">{{msg}}</span>
+      </div>
+    </div>
+    <div class="row" *ngIf="messageHandler.infos.length > 0">
+      <div class="col-md-12 msg-section">
+        <!--<h4>Report:</h4>-->
+        <span class="info-text help-block" *ngFor="let msg of messageHandler.infos">{{msg}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="btn-toolbar pull-left">
+      <app-import-file (import)="feedbackGrid.onImport($event)"></app-import-file>
+      <a href="assets/csv-templates/register-dry-vials-template.csv" class="btn btn-primary">Download template</a>
+      <button type="button" class="btn btn-primary" (click)="feedbackGrid.onExport()">Export</button>
+      <button type="button" class="btn btn-primary" (click)="feedbackGrid.onAddRow()">Add row</button>
+      <button type="button" class="btn btn-primary" (click)="feedbackGrid.onRemoveSelected()">Remove selected rows</button>
+    </div>
+    <div class="btn-toolbar pull-right">
+      <button type="button" class="btn btn-danger" (click)="feedbackGrid.onClear()">Clear</button>
+      <button type="button" class="btn btn-success" (click)="feedbackGrid.onSubmit()" [disabled]=
+        "(feedbackGrid.vialsGridApi && feedbackGrid.inventoryGridApi)? (feedbackGrid.vialsGridApi.getDisplayedRowCount() <= 0) ||
+        feedbackGrid.vialsFeedback.errorsExist() || feedbackGrid.inventoryFeedback.errorsExist(): true">Submit</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h4>
+      Vials
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-feedback-grid
+      height="300"
+      class="ag-theme-balham"
+      [feedback]="feedbackGrid.vialsFeedback.feedbackDict"
+      [rowSelection]="rowSelection"
+      [defaultColDef]="vialsDefaultColDef"
+      [rowData]="vialsRowData"
+      [columnDefs]="vialsColumnDefs"
+      (gridReady)="feedbackGrid.onVialsGridReady($event)"
+      (cellValueChanged)="feedbackGrid.onVialCellValueChanged($event)"
+      singleClickEdit="true"
+    >
+    </app-feedback-grid>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <h4>
+      Inventory
+    </h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <app-feedback-grid
+      height="200"
+      class="ag-theme-balham"
+      [feedback]="feedbackGrid.inventoryFeedback.feedbackDict"
+      [rowData]="inventoryRowData"
+      [columnDefs]="inventoryColumnDefs"
+      (gridReady)="feedbackGrid.onInventoryGridReady($event)"
+      singleClickEdit="true"
+      (cellValueChanged)="feedbackGrid.onInventoryCellValueChanged($event)"
+    >
+    </app-feedback-grid>
+  </div>
+</div>
+

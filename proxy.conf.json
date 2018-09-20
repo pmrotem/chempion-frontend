@@ -1,0 +1,14 @@
+{
+  "/api/vials/register-dry": {
+    "target": "http://localhost:8000",
+    "secure": false
+  },
+  "/cm/location_query/": {
+    "target": "http://localhost:8000",
+    "secure": false
+  },
+  "/cm/location_types_query/": {
+    "target": "http://localhost:8000",
+    "secure": false
+  }
+}

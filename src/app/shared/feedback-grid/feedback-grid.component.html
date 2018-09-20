@@ -1,0 +1,11 @@
+<ag-grid-angular
+  [style]="styleText"
+  class="ag-theme-balham"
+  [rowSelection]="rowSelection"
+  [defaultColDef]="defaultColDef"
+  [rowData]="rowData"
+  [columnDefs]="columnDefs"
+  (gridReady)="onGridReady($event)"
+  (cellValueChanged)="onCellValueChanged($event)"
+  [singleClickEdit]="singleClickEdit"
+>

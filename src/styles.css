@@ -1,1 +1,44 @@
+@import "~ag-grid/dist/styles/ag-grid.css";
+@import "~ag-grid/dist/styles/ag-theme-balham.css";
 /* You can add global styles to this file, and also import other style files */
+
+/* forms validation */
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+/* grid status colors */
+.info {
+  background-color: dodgerblue;
+}
+.warning {
+  background-color: darkorange;
+}
+.error {
+  background-color: red;
+}
+.info-text {
+  color: dodgerblue;
+}
+.warning-text {
+  color: darkorange;
+}
+.error-text {
+  color: red;
+}
+
+.msg-section {
+  max-height: 100px;
+  overflow: auto;
+  margin-bottom: 15px
+}
+
+.ag-cell select {
+  height: 100% ! important;
+}
+
+.disabled {
+  color: #bdc3c7;
+}
+
+
